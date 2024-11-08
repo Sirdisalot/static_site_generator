@@ -31,7 +31,7 @@ class LeafNode(HTMLNode):
     def __init__(self, tag, value, props=None):
         super().__init__(tag, value, None, props)
 
-    def add_child(self, child):
+    def add_child(self):
         raise ValueError("LeafNode cannot have children.")
     
     def to_html(self):
