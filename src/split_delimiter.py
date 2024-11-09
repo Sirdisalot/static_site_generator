@@ -1,5 +1,6 @@
 from textnode import TextType, TextNode
 from text_to_html import text_node_to_html_node
+import re
 
 def split_nodes_delimiter(old_nodes, delimiter, text_type):
     if delimiter == None:
@@ -22,19 +23,15 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
                 split_nodes.append(TextNode(sections[i], text_type))
         return_text_node.extend(split_nodes)
     return return_text_node
-            
+
+def extract_markdown_images(text):
+    pattern = r"!\[([^\[\]]*)\]\(([^\(\)]*)\)"
+    matches = re.findall(pattern, text)
+    return matches
+   
+def extract_markdown_links(text):
+    pattern = r"(?<!!)\[([^\[\]]*)\]\(([^\(\)]*)\)"
+    matches = re.findall(pattern, text)
+    return matches
     
     
-    
-    
-    '''
-    if delimiter == "'":
-        text_type_code = TextType.CODE
-        return f"TextNode({return_text_node.append(new_nodes)}, {text_type_code})" 
-    if delimiter == "**":
-        text_type_bold = TextType.BOLD
-        return f"TextNode({return_text_node.append(text_type_bold)}, {text_type_bold})"
-    if delimiter == "*":
-        text_type_italic = TextType.ITALIC
-        return f"TextNode({return_text_node.append(text_type_italic)}, {text_type_italic})"
-    '''
