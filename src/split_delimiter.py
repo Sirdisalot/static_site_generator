@@ -93,9 +93,11 @@ def extract_markdown_links(text):
     matches = re.findall(pattern, text)
     return matches
     
-# def text_to_textnodes(text):
-#     nodes = [TextNode(text, TextType.TEXT)]
-#     nodes = split_nodes_delimiter(nodes, "**", TextType.BOLD)
-#     nodes = split_nodes_delimiter(nodes, "*", TextType.ITALIC)
-#     nodes = split_nodes_delimiter(nodes, "`", TextType.CODE)
-#     nodes = splid
+def text_to_textnodes(text):
+    text = [TextNode(text, TextType.TEXT)]
+    text = split_nodes_delimiter(text, "**", TextType.BOLD)
+    text = split_nodes_delimiter(text, "*", TextType.ITALIC)
+    text = split_nodes_delimiter(text, "`", TextType.CODE)
+    text = split_nodes_image(text)
+    text = split_nodes_link(text)
+    return text
