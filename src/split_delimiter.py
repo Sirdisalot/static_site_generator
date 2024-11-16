@@ -101,3 +101,14 @@ def text_to_textnodes(text):
     text = split_nodes_image(text)
     text = split_nodes_link(text)
     return text
+
+def markdown_to_blocks(markdown):
+    inline_markdown = markdown.split("\n")
+    return_value = []
+    for i in range(len(inline_markdown)):
+        if inline_markdown[i] != "":
+            return_value.append(inline_markdown[i].lstrip())
+    for i in range(len(return_value)):
+        if return_value[i] == "":
+            return_value.pop(i)
+    return return_value
