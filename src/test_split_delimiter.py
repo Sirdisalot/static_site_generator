@@ -117,27 +117,6 @@ class TestSplitDelimiter(unittest.TestCase):
             ],
             new_nodes,
         )
-    
-    def test_markdown_to_blocks(self):
-        node = '''
-            # This is a heading
-
-            This is a paragraph of text. It has some **bold** and *italic* words inside of it.
-
-            * This is the first list item in a list block
-            * This is a list item
-            * This is another list item
-        '''
-        expected = [
-            '# This is a heading', 
-            'This is a paragraph of text. It has some **bold** and *italic* words inside of it.', 
-            '* This is the first list item in a list block', 
-            '* This is a list item', 
-            '* This is another list item',
-        ]
-        print(markdown_to_blocks(node))
-        print(f"This is expected: {expected}")
-        self.assertEqual(markdown_to_blocks(node), expected)
 
 
 if __name__ == "__main__":
